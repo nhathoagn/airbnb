@@ -52,6 +52,9 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: ListingCreateInput,
+  })
   async create(@common.Body() data: ListingCreateInput): Promise<Listing> {
     return await this.service.create({
       data: data,
@@ -159,6 +162,9 @@ export class ListingControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: ListingUpdateInput,
   })
   async update(
     @common.Param() params: ListingWhereUniqueInput,

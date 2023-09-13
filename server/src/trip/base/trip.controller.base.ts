@@ -46,6 +46,9 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: TripCreateInput,
+  })
   async create(@common.Body() data: TripCreateInput): Promise<Trip> {
     return await this.service.create({
       data: {
@@ -172,6 +175,9 @@ export class TripControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: TripUpdateInput,
   })
   async update(
     @common.Param() params: TripWhereUniqueInput,

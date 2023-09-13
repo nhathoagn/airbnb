@@ -52,6 +52,9 @@ export class UserControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: UserCreateInput,
+  })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
     return await this.service.create({
       data: data,
@@ -141,6 +144,9 @@ export class UserControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: UserUpdateInput,
   })
   async update(
     @common.Param() params: UserWhereUniqueInput,

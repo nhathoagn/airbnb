@@ -46,6 +46,9 @@ export class WishlistControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: WishlistCreateInput,
+  })
   async create(@common.Body() data: WishlistCreateInput): Promise<Wishlist> {
     return await this.service.create({
       data: {
@@ -172,6 +175,9 @@ export class WishlistControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: WishlistUpdateInput,
   })
   async update(
     @common.Param() params: WishlistWhereUniqueInput,
